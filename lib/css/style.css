@@ -1,0 +1,23 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "微软雅黑";
+  font-size: .45rem;
+}
+body {
+  max-width: 720px;
+  margin: 0 auto;
+}
+#myContent {
+  padding: 0 .5rem;
+  position: absolute;
+  color: #fff;
+  z-index: 2;
+  text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+}
+#myContent br {
+  margin: 1em;
+  display: block;
+  width: 2em;
+}

@@ -7,23 +7,24 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="../lib/css/style.css"/>
 		<link rel="stylesheet" type="text/css" href="js/layer_mobile/need/layer.css"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
 		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/swiper.jquery.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/layer_mobile/layer.js" type="text/javascript" charset="utf-8"></script>
-		<!-- 图片幻灯片效果-->
-		<script type="text/javascript" src="js/roundabout.js"></script>
-		<script type="text/javascript" src="js/roundabout_shapes.js"></script>
-		<script type="text/javascript" src="js/gallery_init.js"></script>
 		<!-- 下雪-->
-		<script type="text/javascript" src="js/snowstorm.js"></script>
+		<script type="text/javascript" src="./js/ThreeCanvas.js"></script>
+		<script type="text/javascript" src="./js/Snow.js"></script>
+		<script type="text/javascript" src="./js/snowFall.js"></script>
 		<!-- 打字机效果-->
 		<script type="text/javascript" src="js/text.js"></script>
+		
+		<script src="js/swiper.jquery.js" type="text/javascript" charset="utf-8"></script>
 		
 	</head>
 
 	<body style="position: relative;">
-		
+		<audio src="mp3/yt.mp3" preload="auto" class="js_audio" id="audio"></audio>
 		<canvas id="c" style="position: absolute; z-index: 1;"></canvas>
 		<script type="text/javascript">
 			var c = document.getElementsByTagName('canvas')[0];
@@ -57,7 +58,11 @@
 			<br>我有准备一份小礼物，
 			<br>在这之前，你得回答一个问题！
 			<br>你准备好了嘛？！！！
-		</div>		
+		</div>	
+		<div class="imgBox">
+			<img src="images/1.jpeg" alt="" class="animated infinite hide" />		
+		</div>
+		
 		<script type="text/javascript">
 			writeContent(true);
 			$( function() {
@@ -81,14 +86,154 @@
 								    ,time: 2 //2秒后自动关闭
 								});
 							},2000);
-						},
-						btn2:function(){
-							layer.open({
-							    content: '不喜欢没用，给我点喜欢去！'
-							    ,skin: 'msg'
-							    ,time: 2 //2秒后自动关闭
-							});
-							return false;
+							setTimeout( function() {
+								$('body').css('background','url(images/bg/1.jpg)');
+								setTimeout( function() {
+									layer.open({
+										content:'宝宝喜欢雪吗？我能送你一场雪哦！就在这富士山下！',
+										btn:['喜欢'],
+										shadeClose: false,
+										yes: function(){										
+											layer.open({
+											    content: '雪来！！！嘿嘿呀嘿！！！'
+											    ,skin: 'msg'
+											    ,time: 2 //2秒后自动关闭
+											});
+											setTimeout( function() {
+												layer.open({
+												    content: '雪来！！！雪来！！！嘿嘿呀嘿嘿嘿！！！'
+												    ,skin: 'msg'
+												    ,time: 2 //2秒后自动关闭
+												});
+											},3000);
+											setTimeout( function() {
+												layer.open({
+												    content: '……(｡ì _ í｡) 看来得放大招了！！！'
+												    ,skin: 'msg'
+												    ,time: 2 //2秒后自动关闭
+												});
+											},6000);
+											setTimeout( function() {
+												layer.open({
+												    content: '我家宝宝想看雪，求求了，赶紧下雪吧(￣∇￣)'
+												    ,skin: 'msg'
+												    ,time: 2 //2秒后自动关闭
+												});
+											},8500);
+											setTimeout( function() {
+												$.snowFall({
+													//创建粒子数量，密度
+													particleNo: 500,
+													//粒子下拉速度
+													particleSpeed:40,
+													//粒子在垂直（Y轴）方向运动范围
+													particleY_Range:1300,
+													//粒子在垂直（X轴）方向运动范围
+													particleX_Range:1000,
+													//是否绑定鼠标事件
+												    bindMouse: false,
+												    //相机离Z轴原点距离
+												    zIndex:600,
+												  //摄像机视野角度
+												    angle:30,
+												    wind_weight:0
+												});
+												$('canvas').css({'position':'relative','z-index':'1000'});
+											},10500);	
+											setTimeout( function() {
+												layer.open({
+												    content: '漂亮吗？喜欢吗？还有更棒的哦！'
+												    ,skin: 'msg'
+												    ,time: 2 //2秒后自动关闭
+												});
+												setTimeout( function() {
+													layer.open({
+													    content: '来首歌！！'
+													    ,skin: 'msg'
+													    ,time: 2 //2秒后自动关闭
+													});
+												},2000);
+												setTimeout( function() {
+													var audios = document.getElementById("audio");
+													audios.play();
+												},4000);
+												setTimeout( function() {
+													var i=1;
+													function defshow(){
+														$('.imgBox').children().attr('src','images/'+i+'.jpeg').show(1500);
+													
+														i++;
+														setTimeout( function() {
+															$('.imgBox').children().hide(1000);
+														},3500);
+													}
+													setInterval(function() {
+														defshow();
+													},4500)
+													setTimeout( function() {
+														layer.open({
+														    content: '我希望你能永远开心！'
+														    ,skin: 'msg'
+														    ,time: 2 //2秒后自动关闭
+														}); 
+													},4000);
+													setTimeout( function() {
+														layer.open({
+														    content: '在我心里，你就像天使！'
+														    ,skin: 'msg'
+														    ,time: 2 //2秒后自动关闭
+														}); 
+													},7000);
+													setTimeout( function() {
+														layer.open({
+														    content: '纵使相隔万里，'
+														    ,skin: 'msg'
+														    ,time: 2 //2秒后自动关闭
+														}); 
+													},10000);
+													setTimeout( function() {
+														layer.open({
+														    content: '我愿与你相望！'
+														    ,skin: 'msg'
+														    ,time: 2 //2秒后自动关闭
+														}); 
+													},13000);
+													setTimeout( function() {
+														layer.open({
+														    content: '我会努力！'
+														    ,skin: 'msg'
+														    ,time: 2 //2秒后自动关闭
+														}); 
+													},16000);
+													setTimeout( function() {
+														layer.open({
+														    content: '尽早担起该负的责任！'
+														    ,skin: 'msg'
+														    ,time: 2 //2秒后自动关闭
+														}); 
+													},19000);
+													setTimeout( function() {
+														layer.open({
+														    content: '我爱你！'
+														    ,skin: 'msg'
+														    ,time: 2 //2秒后自动关闭
+														}); 
+													},21000);
+													
+													setTimeout( function() {
+														$('body').css({'background':'url(images/5.jpeg) no-repeat center','background-size':'100%'});
+														layer.open({
+														    content: '图片还是太少了～没了～'
+														    ,skin: 'msg'
+														    ,time: 2 //2秒后自动关闭
+														});    
+													},68000);
+												},5000);
+											},13500);
+										}
+									});
+								},1500);							
+							},4000);
 						}
 					});
 				},57600)
